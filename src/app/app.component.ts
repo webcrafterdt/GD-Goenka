@@ -64,7 +64,7 @@ console.log("sdsdsdd =>",this._location);
               handler: () => {
                 console.log("aggreed here");
 
-                window.open('https://play.google.com/store/apps/details?id=com.gdgisnainital.app', '_system', 'location=yes');
+                window.open('https://play.google.com/store/apps/details?id=com.gdgisnainital.DT', '_system', 'location=yes');
               }
             }
           ]
