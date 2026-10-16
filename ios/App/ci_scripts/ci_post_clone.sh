@@ -3,9 +3,23 @@ set -e
 
 echo "===== XCODE CLOUD POST CLONE START ====="
 
-echo "Installing Node..."
+NODE_VERSION="20.19.5"
+NODE_DIR="$HOME/node-$NODE_VERSION"
 
-brew install node
+echo "Installing Node.js $NODE_VERSION..."
+
+if [ ! -x "$NODE_DIR/bin/node" ]; then
+    curl -fsSL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-darwin-x64.tar.gz" \
+        -o "$TMPDIR/node.tar.gz"
+
+    mkdir -p "$NODE_DIR"
+
+    tar -xzf "$TMPDIR/node.tar.gz" \
+        --strip-components=1 \
+        -C "$NODE_DIR"
+fi
+
+export PATH="$NODE_DIR/bin:$PATH"
 
 echo "Node version:"
 node -v
@@ -15,7 +29,7 @@ npm -v
 
 echo "Moving to project root..."
 
-cd ../../..
+cd "$CI_PRIMARY_REPOSITORY_PATH"
 
 echo "Current directory:"
 pwd
