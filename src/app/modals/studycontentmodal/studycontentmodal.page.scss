@@ -1,0 +1,30 @@
+ion-toolbar {
+  //--background: #055073;
+  --background: linear-gradient(#d8a1c9, #4e79a3) !important;
+  --color: white;
+
+}
+
+ion-content {
+  --ion-background-color: #eceff8;
+}
+
+.homework-item {
+  margin-bottom: 12px;
+  /* Space between cards */
+}
+
+.image-item {
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.image-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+}

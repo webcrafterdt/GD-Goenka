@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <!--<ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>-->
+
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModel()" [strong]="true">close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <!-- <ion-list style="background-color: #F0F5F8;">
+          <ion-card >
+          <ion-item>
+             <div style="width:100%;">
+<h5  [innerHTML]="this.contentdetail" ><b></b>
+          </h5>
+        
+            </div>
+          </ion-item>
+        </ion-card>
+        
+        </ion-list> -->
+
+  <p style="margin-top: 8px; font-size: 11px !important; color: gray; text-align: justify; line-height: 1.4;">
+    <!-- <b style="color: #555;">Matter:</b> -->
+    <span [innerHTML]="getSafeHtml(this.contentdetail)"></span>
+  </p>
+
+
+</ion-content>

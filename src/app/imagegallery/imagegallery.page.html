@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ this.ImageCategoryName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+      refreshingSpinner="circles" refreshingText="Fetching latest ImageSubCategory...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="gallery-grid" [style.opacity]="selectedImg ? '0.3' : '1'">
+    <ion-row>
+
+      <ion-col size="4" *ngFor="let imguser of ImageForUser; let i = index">
+        <div class="album-card" (click)="toggleImage(imguser,i)">
+
+          <div class="image-wrapper">
+            <img [src]="imguser.image_path + imguser.image_name" (error)="imguser.imageError=true"
+              *ngIf="!imguser.imageError" class="gallery-img" />
+
+            <img src="assets/thumbnail.jpg" *ngIf="imguser.imageError" class="gallery-img" />
+          </div>
+
+          <div class="album-info">
+
+            <h6 class="album-name">
+              {{ decodeHtml(imguser.title)?.length > 25
+              ? (decodeHtml(imguser.title) | slice:0:25) + '...'
+              : decodeHtml(imguser.title) }}
+            </h6>
+
+            <p class="publish-date">
+              <ion-icon name="calendar-outline"></ion-icon>
+              {{ imguser.Date_of_publish | date:'dd MMM yyyy' }}
+            </p>
+
+          </div>
+
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- Full Screen Viewer -->
+  <!-- <div class="full-screen-viewer" *ngIf="selectedImg">
+
+    <div class="viewer-content" (click)="$event.stopPropagation()">
+
+      <ion-button fill="clear" class="nav-btn left-btn" (click)="previousImage()">
+        <ion-icon name="chevron-back-circle"></ion-icon>
+      </ion-button>
+
+      
+      <img [src]="selectedImg.image_path + selectedImg.image_name" class="zoomed-image" />
+
+      
+      <ion-button fill="clear" class="nav-btn right-btn" (click)="nextImage()">
+        <ion-icon name="chevron-forward-circle"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="close-btn" (click)="closeImage()">
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+      <p class="viewer-title">
+        {{ decodeHtml(selectedImg.title)?.length > 50
+        ? (decodeHtml(selectedImg.title) | slice:0:50) + '...'
+        : decodeHtml(selectedImg.title) }}
+      </p>
+
+      <p class="viewer-desc">
+        {{ decodeHtml(selectedImg.Desctiption) }}
+      </p>
+    </div>
+
+  </div> -->
+
+  <div class="full-screen-viewer" *ngIf="selectedImg" (click)="closeImage()">
+
+    <div class="viewer-content" (click)="$event.stopPropagation()">
+
+      <ion-button fill="clear" class="nav-btn left-btn" (click)="previousImage()">
+        <ion-icon name="chevron-back-circle"></ion-icon>
+      </ion-button>
+
+      <img [src]="selectedImg.image_path + selectedImg.image_name" class="zoomed-image" />
+
+      <ion-button fill="clear" class="nav-btn right-btn" (click)="nextImage()">
+        <ion-icon name="chevron-forward-circle"></ion-icon>
+      </ion-button>
+
+      <ion-button fill="clear" class="close-btn" (click)="closeImage()">
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+
+      <p class="viewer-title">
+        {{ decodeHtml(selectedImg.title)?.length > 50
+        ? (decodeHtml(selectedImg.title) | slice:0:50) + '...'
+        : decodeHtml(selectedImg.title) }}
+      </p>
+
+      <p class="viewer-desc">
+        {{ decodeHtml(selectedImg.Desctiption) }}
+      </p>
+
+    </div>
+  </div>
+
+
+  <div *ngIf="!isLoading && ImageForUser?.length == 0" class="empty-container">
+    <ion-icon name="images-outline"></ion-icon>
+    <p>No Image Available..!</p>
+  </div>
+
+</ion-content>

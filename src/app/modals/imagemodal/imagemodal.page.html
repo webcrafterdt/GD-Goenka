@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModel()" [strong]="true">close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- 🔹 Data -->
+
+  
+<!-- <ion-list>
+  <ion-item
+    *ngFor="let img of Images"
+    lines="none">
+    <p>{{img.title}}</p>
+    <div style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    ">
+
+      <img
+        [src]="img.image_path+img.image_name"
+        style="
+          max-width: 100%;
+          max-height: 250px;
+          border-radius: 8px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+          object-fit: contain;
+        "
+        alt="Article Image" />
+
+    </div>
+
+  </ion-item>
+</ion-list> -->
+
+<ion-list>
+  <ion-item *ngFor="let img of Images" lines="none" class="image-item">
+    
+    <!-- <ion-label class="image-title">
+      {{ img.title }}
+    </ion-label> -->
+
+    <div class="image-wrapper">
+      <img
+        [src]="img.image_path + img.image_name"
+        alt="Article Image"
+      />
+    </div>
+
+  </ion-item>
+</ion-list>
+
+
+
+</ion-content>

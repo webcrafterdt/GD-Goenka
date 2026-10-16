@@ -1,0 +1,164 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModel()" [strong]="true">close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Point 11/12 fix: allowed types + max size shown BEFORE upload,
+           same as web, so the user knows the rules upfront instead of
+           finding out only after an alert pops up. -->
+  <p style="font-size:11px;color:gray;margin:0 0 6px 4px;">
+    Allowed image types: <b>JPG, JPEG, PNG, BMP, GIF</b> &nbsp;|&nbsp; Max size: <b>
+      < 1 MB</b> per image
+  </p>
+
+  <ion-item lines="none" style="margin-top: 10px;">
+    <ion-button expand="block" class="upload-button" (click)="triggerPdfInput()"
+      style="--background:#377796; font-size:11px;">
+
+      <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+      Upload Attachment
+    </ion-button>
+
+    <input type="file" id="pdfInput" multiple
+      accept="image/jpeg,image/png,image/bmp,image/gif,.jpg,.jpeg,.png,.bmp,.gif" (change)="onFileSelect($event)"
+      style="display: none;" />
+  </ion-item>
+
+  <!-- Selected Files List -->
+
+
+  <!-- <div *ngIf="selectedFileNames?.length > 0">
+  <ion-list>
+    <ion-item *ngFor="let name of selectedFileNames; let i = index">
+      <ion-label style="font-size: 12px;">
+        {{ i + 1 }}. {{ name }}
+      </ion-label>
+      <ion-icon name="close-circle" color="danger" slot="end" (click)="removeFile(i)"></ion-icon>
+    </ion-item>
+  </ion-list>
+</div> -->
+
+
+  <!--
+<div *ngIf="selectedFileNames.length > 0">
+  <ion-list>
+    <ion-item *ngFor="let name of selectedFileNames; let i = index">
+      
+      <ion-label class="ion-text-wrap" style="font-size: 12px;">
+        <b>{{ i + 1 }}. {{ name }}</b>
+
+
+         <ion-item lines="none">
+      <ion-input style="font-size: 12px;"
+        placeholder="Image Text"
+        name="'descriptions' + i"
+        [(ngModel)]="descriptions[i]">
+      </ion-input>
+    </ion-item>
+
+        
+        <ion-radio-group
+          [(ngModel)]="orientations[i]"
+          name="'orientations' + i"
+          style="margin-top: 6px; display: flex; gap: 10px;">
+
+          <ion-item lines="none" style="font-size: 14px;">
+            <ion-label style="margin-right: 5px;">Landscape</ion-label>
+            <ion-radio value="landscape" ></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" style="font-size: 14px;">
+            <ion-label style="margin-right: 5px;">Portrait</ion-label>
+            <ion-radio value="portrait"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+
+      </ion-label>
+
+      
+      <ion-icon
+        name="close-circle"
+        color="danger"
+        slot="end"
+        (click)="removeFile(i)">
+      </ion-icon>
+
+    </ion-item>
+  </ion-list>
+</div>-->
+
+  <div *ngIf="selectedFileNames.length > 0">
+    <ion-list>
+
+      <ng-container *ngFor="let name of selectedFileNames; let i = index">
+
+        <!-- FILE NAME -->
+        <ion-item>
+          <ion-label style="font-size: 12px;">
+            <b>{{ i + 1 }}. {{ name }}</b>
+          </ion-label>
+
+          <ion-icon name="close-circle" color="danger" slot="end" (click)="removeFile(i)">
+          </ion-icon>
+        </ion-item>
+
+        <!-- DESCRIPTION -->
+        <ion-item lines="none">
+          <ion-input placeholder="Image Text" style="font-size: 12px;" [(ngModel)]="descriptions[i]">
+          </ion-input>
+        </ion-item>
+
+        <!-- ORIENTATION -->
+        <!-- Point 10 fix: orientations[i] is now defaulted to 'landscape'
+           in the .ts file the moment a file is added, so this radio
+           group shows Landscape selected by default instead of neither
+           option being selected. -->
+        <ion-item lines="none">
+          <ion-radio-group [name]="'orientation_' + i" [(ngModel)]="orientations[i]" value="landscape"
+            style="display: flex; gap: 16px;">
+
+            <ion-item lines="none">
+              <ion-label>Landscape</ion-label>
+              <ion-radio value="landscape"></ion-radio>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label>Portrait</ion-label>
+              <ion-radio value="portrait"></ion-radio>
+            </ion-item>
+
+          </ion-radio-group>
+        </ion-item>
+
+      </ng-container>
+
+    </ion-list>
+  </div>
+
+
+
+  <!-- <p *ngIf="selectedFileNames?.length < 3" style="font-size:11px;color:gray;">
+  Max 3 files allowed 
+</p> -->
+
+
+
+
+
+
+
+
+  <p style="font-size:11px;color:gray;">
+    Max 3 files allowed
+  </p>
+
+
+
+
+</ion-content>

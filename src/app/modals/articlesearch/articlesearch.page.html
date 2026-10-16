@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Advance Search</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Search Text</ion-label>
+      <ion-input [(ngModel)]="searchData.text" placeholder="Enter keyword"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Find In</ion-label>
+      <ion-select [(ngModel)]="searchData.findIn">
+        <ion-select-option value="title">Article Title</ion-select-option>
+        <ion-select-option value="detail">Article Detail</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Subject</ion-label>
+      <ion-select [(ngModel)]="searchData.subjectId">
+        <ion-select-option value="0">All</ion-select-option>
+        <ion-select-option *ngFor="let sub of subjects" [value]="sub.asubid">{{sub.SubjectName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="stacked">Author</ion-label>
+      <ion-select [(ngModel)]="searchData.authorid">
+        <ion-select-option value="0">All</ion-select-option>
+        <ion-select-option *ngFor="let aulist of AuthoreLists"
+          [value]="aulist.authorid">{{aulist.author}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>Apply Date Criteria</ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="searchData.applyDate"></ion-checkbox>
+    </ion-item>
+
+    <ng-container>
+      <ion-item>
+        <ion-label position="stacked">Start Date</ion-label>
+        <ion-input type="date" [(ngModel)]="searchData.startDate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">End Date</ion-label>
+        <ion-input type="date" [(ngModel)]="searchData.endDate"></ion-input>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block" (click)="submitSearch()">SUBMIT</ion-button>
+    <ion-button expand="block" fill="outline" (click)="resetSearch()">RESET</ion-button>
+  </div>
+</ion-content>

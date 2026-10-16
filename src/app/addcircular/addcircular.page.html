@@ -1,0 +1,187 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Circular</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <!-- <ion-title style="font-size: 12px;color: gray;margin-top: 10px;margin-left: 4px;">{{this.SelectedClassName}}    >>    {{this.ExamName}}</ion-title> -->
+  <ion-card style="background-color:#e4f3f7;">
+    <!-- <ion-title style="font-size: 11px;color: #000000;margin-top: 10px;font-weight: bold;"> -->
+
+    <ion-col size="4" class="text-column" style="float: right;">
+      <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;
+      height:34px;color: white;
+      font-size:12px;font-weight:bold;margin-right: 3px;" type="submit" expand="block" (click)="addcircular()">Add New +</ion-button>
+    </ion-col>
+
+
+    <!-- </ion-title> -->
+
+
+  </ion-card>
+
+
+  <ion-row class="custom-rowheader">
+    <ion-col size="9" class="text-column">
+      <p class="text">Circulars</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+  </ion-row>
+
+
+
+  <ng-container *ngFor="let Circulars of this.CircularDetail;let p = index">
+    <ion-accordion-group>
+      <ion-accordion>
+        <ion-item slot="header" class="custom-row" (click)="getsubjectid(Circulars.Id)">
+          <!-- <ion-label>
+            {{Subjects.subname}}
+          </ion-label> -->
+          <ion-row>
+            <ion-col size="12" class="text-column">
+              <p class="text">{{Circulars.Title}}</p>
+            </ion-col>
+            <!-- <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+              <p class="amount">&nbsp;</p>
+            </ion-col> -->
+
+          </ion-row>
+
+
+        </ion-item>
+        <div slot="content">
+          <ion-row class="custom-row">
+
+
+
+
+            <!-- <ng-template *ngIf="this.Ismarks_Entered[Subjects.subid]; else noMarks"> -->
+            <ng-container style="margin-left: 100px;;">
+
+
+              <ion-col size="5" class="text-column" style="text-align: center;margin-left: 8%;">
+                <p class="text">From </p>
+              </ion-col>
+              <ion-col size="5" class="text-column" style="text-align: center;margin-left: 8%">
+                <p class="text">To </p>
+              </ion-col>
+              <!-- <ion-col size="4" class="text-column">
+                <p class="text">&nbsp; </p>
+              </ion-col> -->
+
+
+              <ion-col size="5" class="text-column" style="margin-left: 8%">
+                <p class="text" style="color: gray;">{{Circulars.DateFrom}}</p>
+              </ion-col>
+              <ion-col size="5" class="text-column" style="margin-left: 8%">
+                <p class="text" style="color: gray;">{{Circulars.ToDate}}</p>
+              </ion-col>
+              <!-- <ion-col size="4" class="text-column">
+                <p class="text">&nbsp; </p>
+              </ion-col> -->
+
+
+              <!--Student Staff Starts-->
+              <ion-col size="5" class="text-column" (click)="AssignCircularStudent(Circulars.Id)" style="margin-left: 5%">
+                <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;margin-left: -1px;" type="submit"
+                  expand="block">
+                  <img src="assets/students_list.png" style="height: 21px;width: 23px;margin-top: 2px;"/>
+                  &nbsp;&nbsp;Student</ion-button>
+              </ion-col>
+
+              <ion-col size="5" class="text-column" style="margin-left: 5%">
+                <ion-button (click)="assigncircularteacher(Circulars.Id)" color="linear-gradient(#007ab3, #055073)" expand="block"
+                  size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;" type="submit"
+                  expand="block">
+                  <img src="assets/001.png" style="height: 26px;width: 26px;margin-bottom: 9px;margin-right: 7px;"/>
+                  &nbsp;&nbsp;Staff</ion-button>
+              </ion-col>
+
+              <!--Student Staff Ends-->
+
+
+              <!-- <ion-col size="2" class="text-column">
+                &nbsp;
+              </ion-col> -->
+
+
+
+
+
+              <!-- </ng-container>
+            <ng-container *ngIf="this.Ismarks_Entered[Subjects.subid]"> -->
+              <ion-col size="5" class="text-column" (click)="delete(Circulars.Id)" style="margin-left: 5%"> 
+                <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;margin-left: -1px;" type="submit"
+                  expand="block">Delete -</ion-button>
+              </ion-col>
+
+              <ion-col size="5" class="text-column" style="margin-left: 5%">
+                <ion-button (click)="EditCircular(Circulars.Id)" color="linear-gradient(#007ab3, #055073)" expand="block"
+                  size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;" type="submit" expand="block">Edit
+                </ion-button>
+              </ion-col>
+
+              <!-- This Condition will check include grand total -->
+              <!-- <ion-row *ngIf="Subjects.isgraded == 'N'">
+
+                <ng-container>
+                  <ion-grid style="padding: 0px;">
+                  <ion-row>
+                    <ion-col size="11">
+                      <p style="font-size: 13px;">Include In Grand Total</p>
+                    </ion-col>
+                    <ion-col size="1">
+                      
+                      <ion-toggle [(ngModel)]="Subjects.Include_In_GT"  (click)="ChangeValue($event,Circulars.id)" color="tertiary"></ion-toggle>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                </ng-container>
+              </ion-row> -->
+
+
+
+
+              <!-- View Marks Modal Starts-->
+
+              <!-- View Marks Modal Starts-->
+            </ng-container>
+          </ion-row>
+
+
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ng-container>
+
+
+
+
+
+  <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.CircularDetail.length == 0">
+    <ion-card>
+      <ion-item>
+        <div style="width:100%;">
+          <h6 style="font-size: 12px;color: gray;">Circular Not Found..!!</h6>
+
+
+        </div>
+      </ion-item>
+
+    </ion-card>
+  </ion-list>
+
+
+</ion-content>

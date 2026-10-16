@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">GDGIS Nainital</string>
+    <string name="title_activity_main">GDGIS Nainital</string>
+    <string name="package_name">com.gdgisnainital.app</string>
+    <string name="custom_url_scheme">com.gdgisnainital.app</string>
+</resources>

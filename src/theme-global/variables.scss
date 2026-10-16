@@ -1,0 +1,86 @@
+/*
+  MODERN THEME v3 - variables.scss
+  --------------------------------------------------
+  Replace your existing src/theme/variables.scss with this file
+  (or merge the :root block into your existing one).
+
+  - Force light mode always, phone/system dark mode ka koi effect nahi padega.
+  - Naya "standard" modern Blue -> Sky -> Teal palette (poori purple/violet
+    theme hata kar). Ye ek clean, professional, thoda bhi zyada dark na
+    lagne wala look deta hai jo aajkal ke modern school/education apps me
+    common hai. Saare .page.scss files me bhi yehi palette apply ki gayi hai.
+*/
+
+/* Tells the OS / browser: is app hamesha LIGHT hi rahega */
+:root {
+  color-scheme: light only;
+}
+
+/* ---------- Core brand colors ---------- */
+:root {
+  --ion-color-primary: #2563EB;
+  --ion-color-primary-rgb: 37, 99, 235;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1D4ED8;
+  --ion-color-primary-tint: #3B82F6;
+
+  --ion-color-secondary: #0EA5E9;
+  --ion-color-secondary-rgb: 14, 165, 233;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0284C7;
+  --ion-color-secondary-tint: #38BDF8;
+
+  --ion-color-tertiary: #0D9488;
+  --ion-color-tertiary-rgb: 13, 148, 136;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #115E59;
+  --ion-color-tertiary-tint: #14B8A6;
+
+  --ion-color-success: #2acd72;
+  --ion-color-danger: #da4453;
+  --ion-color-warning: #ff9500;
+
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+  --ion-text-color: #1F2430;
+  --ion-text-color-rgb: 31, 36, 48;
+
+  --ion-toolbar-background: linear-gradient(135deg, #3B82F6, #2563EB);
+  --ion-item-background: #ffffff;
+
+  /* App ka light surface/background (headers ke peeche, cards ke peeche) */
+  --app-surface-tint: #EFF6FF;
+}
+
+/* ---------------------------------------------------------------
+   IMPORTANT: dark mode disable
+   ---------------------------------------------------------------
+   Agar aapki app pehle se koi "@media (prefers-color-scheme: dark)"
+   block use kar rahi hai variables.scss mein (Ionic starter default),
+   use pura DELETE/comment kar dein — kyunki wahi block phone ke dark
+   mode par colors ko switch karta hai. Yahan hum jaan-boojh kar koi
+   dark-mode media query nahi likh rahe, isiliye colors hamesha same
+   rahenge chahe phone light mode mein ho ya dark mode mein.
+--------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------
+   FIX: Android par header ke upar bada khaali white gap
+   ---------------------------------------------------------------
+   Kuch Android devices/WebViews par Capacitor safe-area-inset-top ki
+   value galat / bahut zyada bhej deta hai, jisse Ionic ka
+   --ion-safe-area-top variable bahut bada ho jaata hai aur HAR page ke
+   header ke upar ek bada khaali gap dikhta hai (status bar ke saath
+   koi relation nahi, sirf ek CSS calculation issue hai).
+
+   Fix: iss variable ko manually ek normal Android status-bar jitni
+   height (24px) par "cap" kar dete hain. Agar device sahi (chhoti)
+   value bhejta hai to woh use hogi, agar galat (badi) value bhejta hai
+   to zyada se zyada 24px hi liya jayega.
+--------------------------------------------------------------- */
+:root {
+  --ion-safe-area-top: min(env(safe-area-inset-top), 24px);
+}
+

@@ -1,0 +1,252 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Articles </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openSearchModal()">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<!-- <ion-content> -->
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)" #content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+      refreshingSpinner="circles" refreshingText="Fetching latest Article...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- Subject Filter Card -->
+  <div class="subject-filter">
+
+    <div class="filter-label">
+      <ion-icon name="book-outline"></ion-icon>
+      <span>Select Subject</span>
+    </div>
+
+    <ion-item lines="none" class="filter-item">
+      <ion-select interface="action-sheet" [(ngModel)]="selectedAsubid" (ionChange)="changeSubject($event)"
+        placeholder="Choose Subject">
+
+        <ion-select-option *ngFor="let sub of ArticleSubjectList" [value]="sub.asubid">
+
+          {{ sub.SubjectName }}
+
+        </ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+  </div>
+  <div>
+
+
+
+
+    <!--------------------------Apply News Ends ---------------------------->
+
+
+
+
+
+    <ion-list>
+      <ng-container>
+        <ng-container>
+
+          <!-- <div style="width: 100%;    margin-bottom: 17px;padding-bottom: 17px;">
+          <div style="float: left;width: 30%;font-weight: bold;color:#47515b;text-align: center;font-size:13px">Authorized
+          </div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;background-color:#BBEDBE">&nbsp;</div>
+         
+          <div
+            style="float: left;width: 25%;font-weight: bold;color:#47515b;text-align: center;font-size:13px;text-align:center;padding-left: 25px;">
+            Pending</div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;background-color:#F4D291;margin-left: 50px;">
+            &nbsp;</div>
+          </div> -->
+
+
+          <ng-container *ngFor="let article of ArticleList; let i = index">
+            <ion-row class="custom-row" *ngIf="article.auth == 'Y'">
+              <ion-col size="12">
+                <div style="position: relative; width: 100%; height: 100%;">
+
+                  <!-- Left colored bar -->
+
+                  <div [ngStyle]="{
+                'border-top-left-radius': '12px',
+                'border-bottom-left-radius': '12px',
+                'width': '6%',
+                'float': 'left',
+                'background-color': article.auth === 'Y' ? '#BBEDBE' : '#F4D291',
+                'height': '100%',
+                'display': 'flex',
+                'justify-content': 'center',
+                'align-items': 'center'
+              }">
+                  </div>
+
+
+                  <!-- 
+                  <div
+                    style="width: 92%; float: left; background-color: white; padding: 10px; border-radius: 0 12px 12px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                    <p style="font-size:13px;white-space: pre-line;color: black">
+                      <b [innerHTML]="decodeHtml(article.title)"></b>
+                    </p>
+                    <p style="margin-top: 5px;font-size:11px !important;color:gray;">Author:
+                      {{article.author}}
+                    </p>
+                    <p style="margin-top: 5px;font-size:11px !important;color:gray;">Date:
+                      {{article.datepost}}
+                    </p>
+                    <p style="margin-top: 5px;font-size:11px !important;color:gray;">Matter:
+                      <b [innerHTML]="decodeHtml(article.matter)"></b>
+
+
+                  </div> -->
+                  <div
+                    style="width: 94%; background-color: white; padding: 12px; border-radius: 0 12px 12px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: relative;">
+
+                    <div style="position: absolute; top: 10px; right: 10px; text-align: center;">
+                      <img [src]="article.Authoriser_Image"
+                        onerror="this.onerror=null; this.src='assets/imgs/user-placeholder.png';"
+                        style="width: 75px; height: 75px; border-radius: 50%; border: 2px solid #f0f0f0; object-fit: cover;">
+                      <!-- <p style="font-size: 8px; color: gray; margin: 0; text-transform: uppercase;">Verified By</p> -->
+                    </div>
+
+                    <p style="font-size:13px; white-space: pre-line; color: black; padding-right: 50px;">
+                      <b [innerHTML]="decodeHtml(article.title)"></b>
+                    </p>
+
+                    <p
+                      style="margin-top: 5px; font-size:11px !important; color:gray; display: flex; align-items: center;">
+                      <ion-icon name="person-outline" style="margin-right: 4px;"></ion-icon>
+                      Author: {{article.author}} ({{article.utype}})
+                    </p>
+
+                    <p
+                      style="margin-top: 3px; font-size:11px !important; color:gray; display: flex; align-items: center;">
+                      Total Views: {{article.TotalViews}}
+
+                    </p>
+
+                    <p
+                      style="margin-top: 3px; font-size:11px !important; color:gray; display: flex; align-items: center;">
+                      <ion-icon name="calendar-outline" style="margin-right: 4px;"></ion-icon>
+                      Date: {{article.datepost}}
+                    </p>
+
+                    <p style="padding-top: 10px; font-size:11px !important; color:#3880ff; text-transform: uppercase; font-weight: bold; cursor: pointer;"
+                      (click)="AttachemtnView(article.articleid)">
+                      <ion-icon name="document-attach-outline"></ion-icon> Click to View Attachment
+                    </p>
+
+
+                    <div style="margin-top: 15px; background: #f9f9f9; border-radius: 8px; padding: 8px;">
+                      <ion-item lines="none" style="--background: transparent; --padding-start: 0;">
+                        <ion-textarea placeholder="Write a comment..." [(ngModel)]="article.commentText"
+                          auto-grow="true" rows="1"
+                          style="font-size: 12px; margin: 0; border: 1px solid #ddd; border-radius: 20px; --padding-start: 15px; background: white;">
+                        </ion-textarea>
+
+                        <ion-button *ngIf="article.commentText && article.commentText.trim().length > 0" fill="clear"
+                          slot="end" (click)="submitComment(article,article.author)"
+                          style="--color: #3880ff; margin: 0;">
+                          <ion-icon name="send" slot="icon-only"></ion-icon>
+                        </ion-button>
+                      </ion-item>
+                    </div>
+
+
+
+                    <div *ngIf="article.ArticleComment?.length > 0"
+                      (click)="article.showAllComments = !article.showAllComments"
+                      style="display: flex; align-items: center; padding: 10px 0; cursor: pointer; color: #3880ff; font-size: 11px; font-weight: bold;">
+                      <ion-icon [name]="article.showAllComments ? 'chevron-up' : 'chevron-down'"
+                        style="margin-right: 5px;"></ion-icon>
+                      {{ article.showAllComments ? 'Hide' : 'View' }} {{ article.ArticleComment.length }} Comments
+                    </div>
+
+                    <div *ngIf="article.showAllComments && article.ArticleComment?.length > 0"
+                      style="margin-top: 5px; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; background: #fff;">
+                      <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                        <thead style="background: #f8f9fa; color: #555;">
+                          <tr>
+                            <th style="padding: 8px; text-align: left; border-bottom: 1px solid #eee; width: 30px;">S.No
+                            </th>
+                            <th style="padding: 8px; text-align: left; border-bottom: 1px solid #eee;">Comment</th>
+                            <th style="padding: 8px; text-align: left; border-bottom: 1px solid #eee; width: 80px;">By
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let cmt of article.ArticleComment; let idx = index"
+                            style="border-bottom: 1px solid #fafafa;">
+                            <td style="padding: 8px; color: #999;">{{ idx + 1 }}</td>
+                            <td style="padding: 8px; color: #333; line-height: 1.3;">{{ cmt.comment }}</td>
+                            <td style="padding: 8px; color: #666; font-style: italic;">{{ cmt.comment_by }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid #eee; margin: 8px 0;">
+
+
+                    <!-- <p
+                      style="margin-top: 8px; font-size: 11px !important; color: gray; text-align: justify; line-height: 1.4;">
+                      <b style="color: #555;">Matter:</b>
+                      <span [innerHTML]="getSafeHtml(article.matter)"></span>
+                    </p> -->
+                    <p style="padding-top: 10px; font-size:11px !important; color:#3880ff; text-transform: uppercase; font-weight: bold; cursor: pointer;"
+                      (click)="ContentDataView(article.matter)">
+                      <ion-icon name="document-attach-outline"></ion-icon> Click to Matter
+                    </p>
+                    <!-- <div class="matter-section">
+                      <div class="matter-title">Matter:</div>
+
+                      <div class="matter-container">
+                        <div class="html-content" [innerHTML]="getSafeHtml(article.matter)"></div>
+                      </div>
+                    </div> -->
+
+
+
+
+
+                  </div>
+
+                </div>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+
+
+
+  </div>
+
+
+  <ion-list *ngIf="!isLoading && ArticleList.length == 0">
+    <ion-card>
+      <ion-item>
+        <div style="width:100%;">
+          <h5 style="font-size:11px;"><b>No Articles Available..!</b></h5>
+        </div>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="showScrollButton">
+    <ion-fab-button size="small" (click)="scrollToTop()" style="--background: #3880ff;">
+      <ion-icon name="arrow-up-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

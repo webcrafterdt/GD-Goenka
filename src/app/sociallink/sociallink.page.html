@@ -1,0 +1,61 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Connect With Us</ion-title>
+  </ion-toolbar>
+  </ion-header> -->
+
+
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Connect With Us</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+        <ion-title>Social Media</ion-title>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid style="margin-top: 10px;">
+
+    <ion-row class="ion-text-center">
+
+      <!-- <ion-col size="4">
+        <div class="container" (click)="openinsta()" routerDirection="root" lines="none" detail="false"
+          routerLinkActive="selected" style="border-radius: 50%;">
+          <img src="assets/instagram.png"
+            style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+        </div>
+      </ion-col> -->
+      <ion-col size="4">
+        <div class="container" (click)="openfacebook()" routerDirection="root" lines="none" detail="false"
+          routerLinkActive="selected" style="border-radius: 50%;">
+          <img src="assets/facebook.png"
+            style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="container" (click)="openyoutube()" routerDirection="root" lines="none" detail="false"
+          routerLinkActive="selected" style="border-radius: 50%;">
+          <img src="assets/youtube.png"
+            style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+  </ion-grid>
+</ion-content>

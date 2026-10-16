@@ -1,0 +1,95 @@
+PODS:
+  - Capacitor (4.2.0):
+    - CapacitorCordova
+  - CapacitorApp (4.0.1):
+    - Capacitor
+  - CapacitorBrowser (4.0.1):
+    - Capacitor
+  - CapacitorCordova (4.2.0)
+  - CapacitorDevice (4.0.1):
+    - Capacitor
+  - CapacitorFilesystem (4.1.2):
+    - Capacitor
+  - CapacitorHaptics (4.0.1):
+    - Capacitor
+  - CapacitorKeyboard (4.0.1):
+    - Capacitor
+  - CapacitorPreferences (4.0.1):
+    - Capacitor
+  - CapacitorStatusBar (4.0.1):
+    - Capacitor
+  - CapacitorVideoPlayer (4.1.0):
+    - Capacitor
+  - CordovaPlugins (6.0.0):
+    - CapacitorCordova
+  - CordovaPluginsStatic (6.0.0):
+    - CapacitorCordova
+    - OneSignalXCFramework (= 3.9.1)
+  - OneSignalXCFramework (3.9.1)
+
+DEPENDENCIES:
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
+  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
+  - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
+  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
+  - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
+  - CapacitorVideoPlayer (from `../../node_modules/capacitor-video-player`)
+  - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
+  - CordovaPluginsStatic (from `../capacitor-cordova-ios-plugins`)
+
+SPEC REPOS:
+  trunk:
+    - OneSignalXCFramework
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorApp:
+    :path: "../../node_modules/@capacitor/app"
+  CapacitorBrowser:
+    :path: "../../node_modules/@capacitor/browser"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorDevice:
+    :path: "../../node_modules/@capacitor/device"
+  CapacitorFilesystem:
+    :path: "../../node_modules/@capacitor/filesystem"
+  CapacitorHaptics:
+    :path: "../../node_modules/@capacitor/haptics"
+  CapacitorKeyboard:
+    :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorPreferences:
+    :path: "../../node_modules/@capacitor/preferences"
+  CapacitorStatusBar:
+    :path: "../../node_modules/@capacitor/status-bar"
+  CapacitorVideoPlayer:
+    :path: "../../node_modules/capacitor-video-player"
+  CordovaPlugins:
+    :path: "../capacitor-cordova-ios-plugins"
+  CordovaPluginsStatic:
+    :path: "../capacitor-cordova-ios-plugins"
+
+SPEC CHECKSUMS:
+  Capacitor: 1dc8dbe3b5ffb9fd085739dbec754180975a7d37
+  CapacitorApp: 70ea773d069c24ab188ae7a01237b951920ffacf
+  CapacitorBrowser: dd60215f52e232cb209459b0b77cea56ea2e8ade
+  CapacitorCordova: 8de8340fa4fe8f93523a8884ef7024069b44d794
+  CapacitorDevice: 70e6a1993d309d5e77c47072ba144e2dd3d5a503
+  CapacitorFilesystem: cc5f97e472c739978558d340ad2cc68306f87223
+  CapacitorHaptics: 02d48e2efca06ccf3273dbb638b68b0e145f623a
+  CapacitorKeyboard: 3b49a9d517641c123fb691713f99a89d6ebf3a37
+  CapacitorPreferences: d365ea3b5023b2aac39e8f5ce18de141e39d2cae
+  CapacitorStatusBar: e6cf2a9ed07f92ddae9ca101be36d08c61866b35
+  CapacitorVideoPlayer: 4b0b853efe3db49826f9a21c8793b2ef5bfdfd34
+  CordovaPlugins: 94a546f1e7f6da7413b63cc9056de81cdad71465
+  CordovaPluginsStatic: 1e87eca4c44d5e98d2bb00e8547351f39b8084e8
+  OneSignalXCFramework: 27159b0a150cdfe528c85325215c9d78b2f973c7
+
+PODFILE CHECKSUM: ccc732587eb76e2d479ad43ff4c9fa7ab81ee75c
+
+COCOAPODS: 1.16.2

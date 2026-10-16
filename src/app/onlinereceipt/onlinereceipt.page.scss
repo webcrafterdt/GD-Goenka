@@ -1,0 +1,192 @@
+.segment-ios-secondary .segment-button
+{
+  
+  border-bottom: solid #b9b9b9 1px!important;
+  border-top: solid #F0F5F8 1px!important;
+  border-left: solid #F0F5F8 1px!important;
+  border-right: solid #F0F5F8 1px!important;
+  color: #055073!important;
+}
+.list .item.item-block
+{
+  margin-top: 8px!important;
+}
+.segment-ios-secondary .segment-button.segment-activated
+{
+  background: #055073!important;
+}
+
+ion-toolbar{
+  // --background: #055073;
+  --background: linear-gradient(#d8a1c9, #4e79a3)!important;
+  --color: white; 
+ }
+ ion-segment-button::part(indicator-background) {
+  background: #055073;
+}
+.segment-button-checked.md::part(native) {
+  color: #055073;
+}
+
+ion-content {
+  --ion-background-color: #eceff8;
+}
+
+.custom-row {
+  //background-color: #fff;
+  //border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 3px;
+  width: 100%;
+  border-radius: 10px;
+  
+  //margin-left: 2.5%;
+}
+.icon-column,
+.text-column,
+.amount-column {
+  display: flex;
+  align-items: right;
+  justify-content: left;
+}
+
+
+.text {
+  margin: 0;
+  color: black;
+  font-size: 12px;
+  text-align:left
+}
+
+.amount {
+  margin: 0;
+  color: black;
+  font-size: 12px;
+}
+
+
+
+.profile-image-container {
+  position: relative;
+  text-align: center;
+}
+
+.profile-image {
+  width: 87px;
+  height: 87px;
+  border-radius: 50%; /* Use 50% for perfect circle */
+  margin-top: 5px;
+}
+
+.text {
+  font-size: 12px;
+//  color: #333;
+  color: white;
+  margin: 0;
+  font-weight: bold;
+}
+
+.amount {
+  font-size: 11px;
+  //font-weight: bold;
+ // color: #333; /* Blue color for emphasis */
+  color: white;
+  margin: 0;
+  text-align: left;
+}
+
+.text-column,
+.amount-column {
+  display: flex;
+  align-items: center;
+}
+
+.text-right {
+  justify-content: flex-end;
+}
+
+
+
+.custom-card {
+  width: 65%; /* Adjust the width as needed */
+  padding: 10px;
+  margin: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Card background color */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: transform 0.2s ease; /* Add a smooth hover effect */
+}
+
+// .custom-card:hover {
+//   transform: translateY(-4px); /* Lift the card slightly on hover */
+// //   background-color: #f0f0f0;
+//   background-color: #055073;
+//   color: white;
+// }
+
+
+
+
+
+.font_class {
+  /* Define your font styles here */
+  font-size: 12px;
+  //font-weight: bold;
+  color: #333333;
+}
+
+.font_class:hover {
+  color: white;
+}
+
+.custom-card {
+  /* Define common styles for cards */
+  height: 52px;
+  box-shadow: rgb(122 131 137) 0px 0px 4px;
+}
+
+
+
+
+.custom-card2 {
+  width: 65%; /* Adjust the width as needed */
+  padding: 10px;
+  margin: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Card background color */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: transform 0.2s ease; /* Add a smooth hover effect */
+
+}
+
+
+// .custom-card2:hover {
+//   transform: translateY(-4px); /* Lift the card slightly on hover */
+// //   background-color: #f0f0f0;
+//   background-color: red;
+//   color: white;
+// }
+
+
+.highlighted {
+  transform: translateY(-4px); /* Lift the card slightly on hover */
+  background-color: #055073;
+  color: white;
+}
+
+.highlighted1 {
+  transform: translateY(-4px); /* Lift the card slightly on hover */
+  background-color: #055073;
+  color: white;
+}
+
+
+
+.selected {
+  /* Define styles for selected card */
+  //background-color: #f0f0f0; /* Change to desired color */
+  background-color: #055073; /* Change to desired color */
+  
+}

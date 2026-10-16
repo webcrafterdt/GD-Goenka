@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModel()" [strong]="true">close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- 🔹 Data -->
+
+
+
+
+  <ion-card style="background-color: #F0F5F8;">
+    <form [formGroup]="ionicForm" novalidate>
+      <ion-list style="margin-top: 5px;margin-left: 1%;margin-right: 1%;width: 98%;background-color: #F0F5F8;">
+
+        <ion-card class="search-card" style="padding: 4px;">
+          <ion-item lines="none" class="search-item" style="padding: 4px 8px;">
+            <textarea placeholder="Image Title" name="title1" type="text" [(ngModel)]="title1"
+              [ngModelOptions]="{standalone: true}"
+              style="padding-top:12px;width:100%;border:1px solid #8e9099 !important;height: 40px;color:#8e9099;font-size: 12px;border-radius:25px;"
+              required></textarea>
+          </ion-item>
+        </ion-card>
+
+
+
+
+
+        <ion-card class="search-card" style="padding: 4px;">
+          <ion-item lines="none" class="search-item" style="padding: 4px 8px;">
+            <ion-label style="font-size: 11px; font-weight: bold; color: #2c3e50;">
+              Sub Category
+            </ion-label>
+            <ion-select [(ngModel)]="imagesubcatid" [ngModelOptions]="{ standalone: true }"
+              placeholder="Choose Category" interface="popover" ok-text="Select" (ionChange)="getTransid($event)"
+              cancel-text="Cancel">
+
+              <ion-select-option *ngFor="let imagesubcats of ImageSubCatId" [value]="imagesubcats.imagesubcatid">
+                {{ imagesubcats.sub_cat_name }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+
+
+
+        <ion-card id="open-modal1" class="search-card" style="padding: 4px;">
+          <ion-item lines="none" class="search-item" style="padding: 4px 8px;">
+            <ion-label style="font-size: 11px; font-weight: bold; color: #2c3e50;" *ngIf="!this.dateParts_to">Date of
+              Publish</ion-label>
+            <ion-text slot="end" name="todate" required style="font-size: 11px;padding-top: 8px;">{{ this.datepost
+              }}</ion-text>
+
+            <ion-icon name="calendar-outline"
+              style="padding-top: 5px;height: 30px;width: 25px;float: right;padding-right: 10px;"></ion-icon>
+
+          </ion-item>
+        </ion-card>
+
+
+        <ion-modal [initialBreakpoint]="0.7" trigger="open-modal1">
+          <ng-template style="margin-top: 5px;">
+            <ion-content>
+              <ion-datetime #todatetime presentation="date" name="validdate" [(ngModel)]="validdate"
+                formControlName="validdate" showDefaultButtons="true"
+                (ionChange)="to_date(todatetime.value)"></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+
+
+
+        <ion-item lines="none" style="margin-top: 10px;">
+          <ion-button expand="block" class="upload-button" (click)="triggerPdfInput()"
+            style="--background:#377796; font-size:11px;">
+
+            <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+            Upload Image
+          </ion-button>
+          <br />
+
+
+          <input type="file" id="pdfInput" multiple (change)="onFileSelect($event)" style="display: none;" />
+        </ion-item>
+        <p style="margin-left: 5%;font-size: 12px;">{{this.selectedFileNames}}</p>
+        <ion-item lines="none">
+          <ion-radio-group [name]="'orientation'" [(ngModel)]="orientations" [ngModelOptions]="{standalone: true}"
+            style="display: flex; gap: 16px;">
+
+            <ion-item lines="none">
+              <ion-label>Landscape&nbsp;&nbsp;</ion-label>
+              <ion-radio value="Y"></ion-radio>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label>Portrait&nbsp;&nbsp;</ion-label>
+              <ion-radio value="N"></ion-radio>
+            </ion-item>
+
+          </ion-radio-group>
+        </ion-item>
+
+        <ion-item lines="none" style="margin-top: 5px;font-size: 15.5px;">
+          Auto Adjust &nbsp;&nbsp; <ion-checkbox [(ngModel)]="isAutoAdjust" [ngModelOptions]="{standalone: true}"
+            labelPlacement="end" style="--size: 20px; font-size: 12px; color: #2c3e50; font-weight: bold;">
+          </ion-checkbox>
+        </ion-item>
+
+
+
+        <ion-item lines="none" style="margin-top: 10px;">
+          <textarea placeholder="Description" name="des" type="text" [(ngModel)]="des"
+            [ngModelOptions]="{standalone: true}"
+            style="padding-top:12px;width:100%;border:1px solid #8e9099 !important;height: 90px;color:#8e9099;font-size: 12px;border-radius:25px;"
+            required></textarea>
+        </ion-item>
+
+
+      </ion-list>
+    </form>
+
+
+
+
+
+
+
+
+
+    <ion-list>
+      <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:38px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;
+      font-size:14px;font-weight:bold;background:linear-gradient(#d8a1c9, #4e79a3)!important;" type="submit"
+        expand="block" (click)="SubmitImage()">SUBMIT</ion-button>
+    </ion-list>
+  </ion-card>
+
+
+
+
+
+</ion-content>

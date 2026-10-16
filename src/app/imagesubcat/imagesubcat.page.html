@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sub Category</ion-title>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+  <div>
+
+
+    <div>
+
+
+      <!--------------------------Apply News Ends ---------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <ion-list>
+        <ng-container>
+          <ng-container>
+
+
+
+
+            <!-- <ion-row class="custom-row" *ngFor="let ImgCat of ImageCategories; let i = index"> -->
+            <ion-row class="custom-row" *ngFor="let ImgCat of subCaArrarData; let i = index">
+
+              <ion-col size="12">
+                <div style="position: relative; width: 100%; height: 100%;">
+
+                  <!-- Left colored bar -->
+
+                  <div [ngStyle]="{
+                'border-top-left-radius': '12px',
+                'border-bottom-left-radius': '12px',
+                'width': '6%',
+                'float': 'left',
+                'background-color':  '#BBEDBE' ,
+                'height': '100%',
+                'display': 'flex',
+                'justify-content': 'center',
+                'align-items': 'center'
+              }">
+                  </div>
+
+
+
+                  <!-- Homework content -->
+                  <div
+                    style="width: 92%; float: left; background-color: white; padding: 10px; border-radius: 0 12px 12px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+
+
+                    <p style="font-size:13px;white-space: pre-line;color: black">
+                      Sub Category :
+                      <b [innerHTML]="decodeHtml(ImgCat.Name)"></b>
+                    </p>
+
+                    <!-- <p style="margin-top: 5px;font-size:11px !important;color:gray;">Author:
+                {{article.author}}
+              </p>
+              <p style="margin-top: 5px;font-size:11px !important;color:gray;">Date:
+                {{article.datepost}}
+              </p>
+              <p style="margin-top: 5px;font-size:11px !important;color:gray;">Matter:
+                <b [innerHTML]="decodeHtml(article.matter)"></b>
+
+              <p style="padding-top: 15px;font-size:11px !important;color:gray;text-transform: uppercase;" (click)="AttachemtnView(article.articleid)" >Click to View Attachment 
+                
+              </p>
+          -->
+
+                    <!-- <div style="margin-top: 10px; display: flex; gap: 10px;margin-left: 5%;margin-bottom: 3%;">
+                      <ion-button size="small" color="success" (click)="AttachemtnView(ImgCat.imagecatid)">
+                        View Image
+                      </ion-button>
+                    </div> -->
+
+                    <div style="display: flex; justify-content: flex-end; width: 100%; margin-top: 10px;">
+                      <ion-button size="small" class="custom-btn" style="font-size: 12px; padding: 4px 8px;"
+                        (click)="OpenImage(ImgCat.Id,ImgCat.Name)">
+                        View Image
+                      </ion-button>
+                    </div>
+
+
+
+
+
+                  </div>
+
+                </div>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ng-container>
+      </ion-list>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+  <!-- <ion-list style="background-color: #F0F5F8;" *ngIf="this.status == false">
+    <ion-card>
+      <ion-item>
+        <div style="width:100%;">
+          <h5 style="font-size: 11px;"><b>{{this.message}}</b></h5>
+        </div>
+      </ion-item>
+    </ion-card>
+  </ion-list> -->
+  <ion-list *ngIf="!isLoading && ImageCategories.length == 0">
+    <ion-card>
+      <ion-item>
+        <div style="width:100%;">
+          <h5 style="font-size:11px;"><b>No Image Available..!</b></h5>
+        </div>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,15 @@
+.angular/
+node_modules/
+www/
+
+ios/App/Pods/
+ios/App/App/public/
+ 
+ios/App/App/config.xml
+ios/App/App/capacitor.config.json
+ 
+ios/App/App.xcodeproj/xcuserdata/
+ios/App/App.xcworkspace/xcuserdata/
+ 
+android/local.properties
+android/app/src/main/assets/
